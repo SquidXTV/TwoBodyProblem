@@ -7,7 +7,7 @@ import me.squidxtv.twobodyproblem.math.Vector2D;
 
 public class Body {
 
-    private static final double G = 6.67430e-11; // in m^3/(kg*s^2)
+    private static final double G = 6.67430e-11 ; // in m^3/(kg*s^2)
 
     private final DistanceMode distanceMode;
     private final Vector2D position; // in m
@@ -48,10 +48,18 @@ public class Body {
         force.setMagnitude(fg);
 
         force = force.divide(mass).multiply(timeStep);
-        System.out.println("Force: " + force);
-        System.out.println("Time step: " + timeStep);
         velocity.add(force);
-        position.add(velocity.multiply(timeStep));
+        position.add(Vector2D.multiply(velocity, timeStep));
     }
 
+    @Override
+    public String toString() {
+        return "Body{" +
+                "distanceMode=" + distanceMode +
+                ", position=" + position +
+                ", velocity=" + velocity +
+                ", mass=" + mass +
+                ", color=" + color +
+                '}';
+    }
 }

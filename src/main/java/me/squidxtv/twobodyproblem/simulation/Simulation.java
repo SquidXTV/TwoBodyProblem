@@ -53,17 +53,17 @@ public class Simulation extends AnimationTimer {
         }
         super.start();
         active = true;
+        graphics.setFill(Color.BLACK);
+        graphics.fillRect(-100, -100, width+100, height+100);
 
         time = new TimeManager(timeLabel, timeMode, isSlowed);
-        double timeStep = TimeManager.DEFAULT_TIME_STEP_IN_SECONDS / timeMode.getTimeInSeconds() * (isSlowed ? 10 : 1);
+        double timeStep = timeMode.getTimeInSeconds() / (isSlowed ? 10.0 : 1.0);
         runnable = new SimulationLoop(first, second, timeStep);
-        running = EXECUTOR.scheduleWithFixedDelay(runnable, 0, (long) (timeStep * 1e9), TimeUnit.NANOSECONDS);
+        running = EXECUTOR.scheduleWithFixedDelay(runnable, 0, 1, TimeUnit.SECONDS);
 
         this.first = first;
         this.second = second;
 
-        graphics.setFill(Color.BLACK);
-        graphics.fillRect(-100, -100, width+100, height+100);
         time.start();
     }
 
@@ -76,6 +76,8 @@ public class Simulation extends AnimationTimer {
         active = false;
         running.cancel(true);
         running = null;
+        this.first = null;
+        this.second = null;
     }
 
     @Override

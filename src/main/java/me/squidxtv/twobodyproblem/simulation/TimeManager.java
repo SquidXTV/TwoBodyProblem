@@ -4,8 +4,6 @@ import javafx.scene.control.Label;
 
 public final class TimeManager {
 
-    public static final double DEFAULT_TIME_STEP_IN_SECONDS = 0.1;
-
     /**
      * +1 every second
      * in slowmode:

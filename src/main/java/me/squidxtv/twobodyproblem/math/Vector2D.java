@@ -73,6 +73,9 @@ public class Vector2D {
     public static Vector2D subtract(Vector2D v1, Vector2D v2) {
         return new Vector2D(v1.x - v2.x, v1.y - v2.y);
     }
+    public static Vector2D multiply(Vector2D v1, double scalar) {
+        return new Vector2D(v1.x * scalar, v1.y * scalar);
+    }
 
     public static Vector2D of(double x, double y) {
         return new Vector2D(x, y);
