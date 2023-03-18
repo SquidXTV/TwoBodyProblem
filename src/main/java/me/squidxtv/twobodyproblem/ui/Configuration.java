@@ -148,14 +148,34 @@ public class Configuration extends Stage {
         Label currentTime = new Label("Current time:");
         Label simulationTime = new Label("0");
 
-        Label presetLabel = new Label("Presets:");
-        ChoiceBox<Presets> presets = new ChoiceBox<>();
+        Label presetLabel = new Label("Preset:");
+        ChoiceBox<Preset> presets = new ChoiceBox<>();
         presets.setMinWidth(INNER_WIDTH/2);
-        for (Presets value : Presets.values()) {
+        for (Preset value : Preset.values()) {
             presets.getItems().add(value);
         }
-        presets.setValue(Presets.NONE);
-        // TODO: 16/03/2023 presets.setOnAction(actionEvent -> );
+        presets.setOnAction(actionEvent -> {
+            Preset preset = presets.getValue();
+            input1.x.setText(preset.getFirstX());
+            input1.y.setText(preset.getFirstY());
+            input1.velX.setText(preset.getFirstVelX());
+            input1.velY.setText(preset.getFirstVelY());
+            input1.mass.setText(preset.getFirstMass());
+            input1.color.setValue(preset.getFirstColor());
+
+            input2.x.setText(preset.getSecondX());
+            input2.y.setText(preset.getSecondY());
+            input2.velX.setText(preset.getSecondVelX());
+            input2.velY.setText(preset.getSecondVelY());
+            input2.mass.setText(preset.getSecondMass());
+            input2.color.setValue(preset.getSecondColor());
+
+            distanceUnit.setValue(preset.getDistanceMode());
+            timeUnit.setValue(preset.getTimeMode());
+            isSlow.setSelected(preset.isSlowed());
+
+        });
+        presets.setValue(Preset.NONE);
 
         inputs.addRow(gridIndex++, slowmode, isSlow);
         inputs.addRow(gridIndex++, time, timeUnit);

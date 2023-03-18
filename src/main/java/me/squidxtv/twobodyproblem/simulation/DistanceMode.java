@@ -6,6 +6,8 @@ package me.squidxtv.twobodyproblem.simulation;
  */
 public enum DistanceMode {
     KILOMETER(1000),
+    LUNAR(3.84399e8),
+    TWO_LUNAR(LUNAR.inMeter*2),
     ASTRONOMICAL_UNIT(1.495978707e11),
     TWO_ASTRONOMICAL_UNITS(ASTRONOMICAL_UNIT.inMeter*2),
     LIGHT_YEAR(9.4607e15),

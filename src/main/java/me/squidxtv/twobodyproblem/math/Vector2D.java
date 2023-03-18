@@ -1,5 +1,6 @@
 package me.squidxtv.twobodyproblem.math;
 
+@SuppressWarnings("UnusedReturnValue")
 public class Vector2D {
     private double x;
     private double y;
@@ -7,11 +8,6 @@ public class Vector2D {
     public Vector2D(double x, double y) {
         this.x = x;
         this.y = y;
-    }
-
-    public Vector2D(Vector2D vector) {
-        this.x = vector.x;
-        this.y = vector.y;
     }
 
     public double getX() {
@@ -22,11 +18,6 @@ public class Vector2D {
         return y;
     }
 
-
-    public void set(double x, double y) {
-        this.x = x;
-        this.y = y;
-    }
 
     public Vector2D add(Vector2D other) {
         x += other.x;

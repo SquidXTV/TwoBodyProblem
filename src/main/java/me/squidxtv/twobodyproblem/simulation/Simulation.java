@@ -18,8 +18,6 @@ public class Simulation extends AnimationTimer {
         thread.setDaemon(true);
         return thread;
     });
-    private static final int TIME_STEP = 40;
-    private static final TimeUnit TIME_STEP_UNIT = TimeUnit.MILLISECONDS;
 
     private final GraphicsContext graphics;
     private final double width;
@@ -27,7 +25,6 @@ public class Simulation extends AnimationTimer {
 
     private boolean active = false;
     private ScheduledFuture<?> running = null;
-    private SimulationLoop runnable;
 
     private TimeManager time = null;
 
@@ -58,7 +55,7 @@ public class Simulation extends AnimationTimer {
 
         time = new TimeManager(timeLabel, timeMode, isSlowed);
         double timeStep = timeMode.getTimeInSeconds() / (isSlowed ? 10.0 : 1.0);
-        runnable = new SimulationLoop(first, second, timeStep);
+        SimulationLoop runnable = new SimulationLoop(first, second, timeStep);
         running = EXECUTOR.scheduleWithFixedDelay(runnable, 0, 1, TimeUnit.SECONDS);
 
         this.first = first;

@@ -14,7 +14,6 @@ public class App extends Application {
     public static final int WIDTH = 1000;
     public static final int HEIGHT = 1000;
     private static final String TITLE = "Simulation";
-    private Simulation simulation;
 
     @Override
     public void start(Stage stage) {
@@ -27,7 +26,7 @@ public class App extends Application {
         stage.setTitle(TITLE);
         stage.show();
 
-        simulation = new Simulation(canvas);
+        Simulation simulation = new Simulation(canvas);
 
         Configuration configuration = new Configuration(stage, simulation);
         configuration.show();
