@@ -46,7 +46,11 @@ public class Body {
         double magnitudeSq = force.magnitudeSquared();
         fg /= magnitudeSq;
         force.setMagnitude(fg);
-        velocity.add(force.divide(mass).multiply(timeStep));
+
+        force = force.divide(mass).multiply(timeStep);
+        System.out.println("Force: " + force);
+        System.out.println("Time step: " + timeStep);
+        velocity.add(force);
         position.add(velocity.multiply(timeStep));
     }
 
