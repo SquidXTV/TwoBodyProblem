@@ -33,7 +33,7 @@ public enum Preset {
             "5.972e24",
             Color.BLUE,
             DistanceMode.TWO_ASTRONOMICAL_UNITS,
-            TimeMode.DAY,
+            TimeMode.MONTH,
             false
     );
 

@@ -36,7 +36,7 @@ public final class TimeManager {
         time += dt;
         millis = current;
 
-        label.setText(time * mode.getTimeInSeconds() + mode.getTitle());
+        label.setText("%.2f %s".formatted(time, mode.getTitle()));
     }
 
 }

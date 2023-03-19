@@ -19,6 +19,8 @@ public class Simulation extends AnimationTimer {
         return thread;
     });
 
+    private static final int DELAY_IN_MILLIS = 10;
+
     private final GraphicsContext graphics;
     private final double width;
     private final double height;
@@ -54,9 +56,10 @@ public class Simulation extends AnimationTimer {
         graphics.fillRect(-100, -100, width+100, height+100);
 
         time = new TimeManager(timeLabel, timeMode, isSlowed);
-        double timeStep = timeMode.getTimeInSeconds() / (isSlowed ? 10.0 : 1.0);
-        SimulationLoop runnable = new SimulationLoop(first, second, timeStep);
-        running = EXECUTOR.scheduleWithFixedDelay(runnable, 0, 1, TimeUnit.SECONDS);
+        double timeStepInSeconds = timeMode.getTimeInSeconds() / (isSlowed ? 10.0 : 1.0);
+        timeStepInSeconds /= 1000.0/DELAY_IN_MILLIS;
+        SimulationLoop runnable = new SimulationLoop(first, second, timeStepInSeconds);
+        running = EXECUTOR.scheduleWithFixedDelay(runnable, 0, DELAY_IN_MILLIS, TimeUnit.MILLISECONDS);
 
         this.first = first;
         this.second = second;

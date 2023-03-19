@@ -7,7 +7,7 @@ import me.squidxtv.twobodyproblem.math.Vector2D;
 
 public class Body {
 
-    private static final double G = 6.67430e-11 ; // in m^3/(kg*s^2)
+    private static final double G = 6.67430e-11; // in m^3/(kg*s^2)
 
     private final DistanceMode distanceMode;
     private final Vector2D position; // in m
