@@ -19,4 +19,4 @@ The simulation output is displayed on a JavaFX canvas, showing the positions of 
 celestial bodies as they move over time.
 
 I hope you enjoy using TwoBodySimulation and learning about celestial mechanics!
-You can read my thesis [here](todo).
+You can read my thesis [here](https://squidxtv.me/Facharbeit__Two_Body_problem.pdf).
